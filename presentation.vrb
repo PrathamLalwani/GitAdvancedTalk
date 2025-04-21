@@ -1,0 +1,8 @@
+\frametitle{Advanced Git Log Visualization}
+	\begin{lstlisting}[language=bash]
+  git log --oneline --graph --decorate --all
+  \end{lstlisting}
+	Use this command to view a complete, branch-inclusive visualization of the repository history.
+	\vfill
+	\pause
+	\textbf{Q\&A:} Open the floor for student questions or share additional examples as needed.

@@ -1,0 +1,293 @@
+
+\documentclass{beamer}
+
+% Use the Copenhagen theme for an academic and clean look
+\usetheme{Copenhagen}
+
+% Packages for code listings, graphics, and TikZ illustrations
+\usepackage{listings} % for code snippets
+\usepackage{graphicx} % for including images
+\usepackage{tikz}     % for diagrams
+\usepackage{hyperref} % for clickable links
+
+% Set title, subtitle, author, institute and date information
+\title[Advanced Git]{Advanced Git and Bash Techniques for Software Development}
+\subtitle{An In-depth Workshop for Undergraduate Students}
+\author{Your Name}
+\institute[Your Institution]{Your Institution, Department of Computer Science}
+\date{\today}
+
+% Custom code listing settings
+\lstset{
+  basicstyle=\ttfamily\footnotesize,
+  breaklines=true,
+  numbers=left,
+  numberstyle=\tiny,
+  frame=single,
+  captionpos=b
+}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Title Slide
+\begin{frame}
+  \titlepage
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Table of Contents
+\begin{frame}
+  \frametitle{Outline}
+  \tableofcontents
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Section 1: Review Git Basics
+\section{Review Git Basics}
+% Slide 1.1: Introduction to Basic Commands
+\begin{frame}[fragile]
+  \frametitle{Review Git Basics: Introduction}
+  In this section we review the core Git commands and operations that every developer should know. \pause
+  \begin{itemize}
+      \item \textbf{\texttt{git init}}: Initialize a new repository.
+      \item \textbf{\texttt{git add}}: Stage changes for commit.
+      \item \textbf{\texttt{git commit}}: Commit the staged changes.
+      \item \textbf{\texttt{git push}}: Push the commits to a remote repository.
+  \end{itemize}
+  \vfill
+  \textbf{Time: 10 minutes (demo and discussion)}
+\end{frame}
+
+% Slide 1.2: Live Demo Example: Repository Initialization and Simple Workflow
+\begin{frame}[fragile]
+  \frametitle{Git Workflow Example}
+  \textbf{Example Workflow:}
+  \begin{lstlisting}[language=bash]
+  mkdir my_project
+  cd my_project
+  git init
+  echo "Hello, Git!" > README.md
+  git add README.md
+  git commit -m "Initial commit"
+  git remote add origin https://github.com/username/my_project.git
+  git push -u origin master
+  \end{lstlisting}
+  \vfill
+  \alert{Demonstration:} Walk through these commands live or use a recorded terminal session.
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Section 2: Useful Bash Commands
+\section{Some Bash Commands}
+% Slide 2.1: Introduction to Bash Utilities
+\begin{frame}
+  \frametitle{Enhancing Your Shell Workflow}
+  In this section, we cover some handy Bash tools to improve productivity:
+  \begin{itemize}
+      \item \texttt{tldr}: Concise command help.
+      \item \texttt{fzf}: Fuzzy finder for quick navigation.
+      \item \texttt{grep}: Powerful text search.
+      \item \texttt{cd aliases}: Speed up directory navigation.
+      \item \texttt{find}: Locate files by pattern.
+  \end{itemize}
+  \vfill
+  \textbf{Time: 15 minutes (interactive session and examples)}
+\end{frame}
+
+% Slide 2.2: Examples of Bash Commands
+\begin{frame}[fragile]
+  \frametitle{Bash Commands in Action}
+  \textbf{\texttt{tldr} and \texttt{fzf}:}
+  \begin{lstlisting}[language=bash]
+  tldr tar
+  fzf --reverse
+  \end{lstlisting}
+  \medskip
+  \textbf{Custom Alias Example:}
+  \begin{lstlisting}[language=bash]
+  alias proj='cd ~/projects'
+  \end{lstlisting}
+  \vfill
+  \uncover<2->{Try these commands in your terminal after the demonstration.}
+\end{frame}
+
+% Slide 2.3: Combining Commands for Productivity
+\begin{frame}[fragile]
+  \frametitle{Combining Commands in Scripts}
+  \textbf{Using \texttt{grep} and \texttt{find}:}
+  \begin{lstlisting}[language=bash]
+  find . -name "*.log" | xargs grep -i "error"
+  \end{lstlisting}
+  This command searches for “error” in all \texttt{.log} files recursively in the current directory.
+  \vfill
+  \pause
+  \textbf{Discussion:} Share tips on how these commands can be integrated into daily workflows.
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Section 3: Advanced Git Techniques
+\section{Advanced Git Techniques}
+% Slide 3.1: Git Log and Viewing History
+\begin{frame}[fragile]
+  \frametitle{Advanced Git: Exploring History}
+  \textbf{Git Log Options:}
+  \begin{itemize}
+      \item \texttt{git log --oneline} for a compact view.
+      \item \texttt{git log --graph --decorate} to see branch structure.
+  \end{itemize}
+  \vfill
+  \lstset{language=bash}
+  \begin{lstlisting}
+  git log --oneline --graph --decorate
+  \end{lstlisting}
+  \vfill
+  \pause
+  Use these commands to visually inspect the commit history and branch merges.
+\end{frame}
+
+% Slide 3.2: Branching, Merging and Conflict Resolution
+\begin{frame}[fragile]
+  \frametitle{Branching and Merging Strategies}
+  \textbf{Key Concepts:}
+  \begin{itemize}
+      \item \textbf{Branches:} Create feature branches using \texttt{git checkout -b}.
+      \item \textbf{Merging:} Use \texttt{git merge} to integrate changes.
+      \item \textbf{Conflict Resolution:} Use diff and merge tools to resolve conflicts.
+  \end{itemize}
+  \vfill
+  \textbf{Example:}
+  \begin{lstlisting}[language=bash]
+  git checkout -b feature/new-feature
+  # Make changes and commit
+  git checkout master
+  git merge feature/new-feature
+  \end{lstlisting}
+  \vfill
+  \alert{Note:} Explain fast-forward merges versus recursive merges.
+\end{frame}
+
+% Slide 3.3: Squashing Commits and Reverting Changes
+\begin{frame}[fragile]
+  \frametitle{Cleaning Up History: Squash and Revert}
+  \textbf{Squash Commits:}
+  \begin{lstlisting}[language=bash]
+  git rebase -i HEAD~3
+  \end{lstlisting}
+  Use interactive rebase to combine several commits into one for a cleaner history.
+  \vfill
+  \textbf{Reverting Changes:}
+  \begin{lstlisting}[language=bash]
+  git revert <commit-hash>
+  \end{lstlisting}
+  This command safely undoes a specific commit without rewriting history.
+  \vfill
+  \pause
+  \textbf{Discussion:} When is it more appropriate to revert versus perform a rebase?
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Section 4: Contributing to Open Source
+\section{Contributing to Open Source}
+% Slide 4.1: Overview of the Open Source Contribution Workflow
+\begin{frame}
+  \frametitle{Contributing to Open Source: Getting Started}
+  Key Steps:
+  \begin{enumerate}
+      \item \textbf{Forking:} Create your own fork of the repository.
+      \item \textbf{Cloning:} Clone your fork locally using \texttt{git clone}.
+      \item \textbf{Feature Branch:} Create a branch for your changes.
+      \item \textbf{Making Changes:} Code improvements, fixes, or documentation edits.
+      \item \textbf{Pull Request:} Submit your changes for review via a PR.
+  \end{enumerate}
+  \vfill
+  \pause
+  \alert{Tip:} Use GitHub’s GUI and command line tools to manage this workflow.
+\end{frame}
+
+% Slide 4.2: Detailed Workflow with Commands
+\begin{frame}[fragile]
+  \frametitle{Detailed Contribution Workflow}
+  \textbf{Commands:}
+  \begin{lstlisting}[language=bash]
+  # Fork on GitHub, then clone your fork:
+  git clone https://github.com/yourusername/repository.git
+  cd repository
+  git checkout -b feature-improvement
+  
+  # Make changes, then commit:
+  git add .
+  git commit -m "Improve feature X"
+  
+  # Push your branch:
+  git push origin feature-improvement
+  \end{lstlisting}
+  \vfill
+  Then, open GitHub and create a Pull Request. Discuss best practices and code review tips.
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Section 5: Additional Topics and Q&A
+\section{Additional Topics and Q\&A}
+% Slide 5.1: Common Pitfalls and Troubleshooting
+\begin{frame}[fragile]
+  \frametitle{Common Pitfalls \& Troubleshooting in Git}
+  \begin{block}{Tips}
+    \begin{itemize}
+        \item Always backup your work before performing a rebase.
+        \item Use \texttt{git status} and \texttt{git diff} frequently.
+        \item Read error messages carefully and use online searches (e.g., Stack Overflow).
+    \end{itemize}
+  \end{block}
+  \vfill
+  \pause
+  \textbf{Interactive:} Invite questions on real-world issues students have encountered.
+\end{frame}
+
+% Slide 5.2: Recap and Further Resources
+\begin{frame}
+  \frametitle{Recap and Further Resources}
+  \begin{itemize}
+      \item \textbf{Review Git Basics:} Core commands and simple workflows.
+      \item \textbf{Bash Tips:} Useful commands to boost shell efficiency.
+      \item \textbf{Advanced Git:} Viewing history, branching strategies, squashing, and reverting.
+      \item \textbf{Open Source:} Contributing workflow from forking to pull requests.
+  \end{itemize}
+  \vfill
+  Additional reading:
+  \begin{itemize}
+      \item \href{https://git-scm.com/book/en/v2}{Pro Git Book}
+      \item \href{https://www.atlassian.com/git/tutorials}{Atlassian Git Tutorials}
+      \item \href{https://www.gnu.org/software/bash/}{GNU Bash Manual}
+  \end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Section 6: Appendix
+\appendix
+\section*{Appendix: Extra Examples and Q\&A}
+% Slide A.1: Additional Git Log Overlays
+\begin{frame}[fragile]
+  \frametitle{Advanced Git Log Visualization}
+  \begin{lstlisting}[language=bash]
+  git log --oneline --graph --decorate --all
+  \end{lstlisting}
+  Use this command to view a complete, branch-inclusive visualization of the repository history.
+  \vfill
+  \pause
+  \textbf{Q\&A:} Open the floor for student questions or share additional examples as needed.
+\end{frame}
+
+% Slide A.2: Thank You and Contact Information
+\begin{frame}
+  \frametitle{Thank You!}
+  \begin{center}
+    Questions?\\[1em]
+    \textbf{Your Name}\\[0.5em]
+    \texttt{your.email@institution.edu}
+  \end{center}
+  \vfill
+  \hyperlink{contents}{\beamergotobutton{Back to TOC}}
+\end{frame}
+
+\end{document}
