@@ -11,11 +11,11 @@
 \usepackage{hyperref} % for clickable links
 
 % Set title, subtitle, author, institute and date information
-\title[Advanced Git]{Advanced Git and some other shell programs}
-\subtitle{Not so advanced} 
-\author{Pratham Lalwani}
-\institute[UC Merced]{University of California, Merced, Department of Applied Math}
-\date{April 22, 2025}
+\title[Advanced Git]{Advanced Git and Bash Techniques for Software Development}
+\subtitle{An In-depth Workshop for Undergraduate Students}
+\author{Your Name}
+\institute[Your Institution]{Your Institution, Department of Computer Science}
+\date{\today}
 
 % Custom code listing settings
 \lstset{
@@ -56,7 +56,7 @@
 		\item \textbf{\texttt{git push}}: Push the commits to a remote repository.
 	\end{itemize}
 	\vfill
-	% \textbf{Time: 10 minutes (demo and discussion)}
+	\textbf{Time: 10 minutes (demo and discussion)}
 \end{frame}
 
 % Slide 1.2: Live Demo Example: Repository Initialization and Simple Workflow
@@ -64,17 +64,17 @@
 	\frametitle{Git Workflow Example}
 	\textbf{Example Workflow:}
 	\begin{lstlisting}[language=bash]
-  mkdir movies 
-  cd movies 
+  mkdir my_project
+  cd my_project
   git init
-  echo "# My Movies" > README.md
-  git add . 
+  echo "Hello, Git!" > README.md
+  git add README.md
   git commit -m "Initial commit"
   git remote add origin https://github.com/username/my_project.git
   git push -u origin master
   \end{lstlisting}
 	\vfill
-	% \alert{Demonstration:} Walk through these commands live or use a recorded terminal session.
+	\alert{Demonstration:} Walk through these commands live or use a recorded terminal session.
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -88,11 +88,11 @@
 		\item \texttt{tldr}: Concise command help.
 		\item \texttt{fzf}: Fuzzy finder for quick navigation.
 		\item \texttt{grep}: Powerful text search.
-		\item \texttt{shopt -s cdable\_vars}: Speed up directory navigation.
+		\item \texttt{cd aliases}: Speed up directory navigation.
 		\item \texttt{find}: Locate files by pattern.
 	\end{itemize}
 	\vfill
-	% \textbf{Time: 15 minutes (interactive session and examples)}
+	\textbf{Time: 15 minutes (interactive session and examples)}
 \end{frame}
 
 % Slide 2.2: Examples of Bash Commands
@@ -101,13 +101,12 @@
 	\textbf{\texttt{tldr} and \texttt{fzf}:}
 	\begin{lstlisting}[language=bash]
   tldr tar
-  fzf 
+  fzf --reverse
   \end{lstlisting}
 	\medskip
 	\textbf{Custom Alias Example:}
 	\begin{lstlisting}[language=bash]
-   shopt -s cdable_vars
-   proj='cd ~/projects'
+  alias proj='cd ~/projects'
   \end{lstlisting}
 	\vfill
 	\uncover<2->{Try these commands in your terminal after the demonstration.}
@@ -123,6 +122,7 @@
 	This command searches for “error” in all \texttt{.log} files recursively in the current directory.
 	\vfill
 	\pause
+	\textbf{Discussion:} Share tips on how these commands can be integrated into daily workflows.
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -143,6 +143,7 @@
   \end{lstlisting}
 	\vfill
 	\pause
+	Use these commands to visually inspect the commit history and branch merges.
 \end{frame}
 
 % Slide 3.2: Branching, Merging and Conflict Resolution
@@ -157,12 +158,13 @@
 	\vfill
 	\textbf{Example:}
 	\begin{lstlisting}[language=bash]
-  git switch new-feature
+  git checkout -b feature/new-feature
   # Make changes and commit
-  git switch main 
-  git merge new-feature
+  git checkout master
+  git merge feature/new-feature
   \end{lstlisting}
 	\vfill
+	\alert{Note:} Explain fast-forward merges versus recursive merges.
 \end{frame}
 
 % Slide 3.3: Squashing Commits and Reverting Changes
@@ -170,8 +172,8 @@
 	\frametitle{Cleaning Up History: Squash and Revert}
 	\textbf{Squash Commits:}
 	\begin{lstlisting}[language=bash]
-  git rebase -i
-	\end{lstlisting}
+  git rebase -i HEAD~3
+  \end{lstlisting}
 	Use interactive rebase to combine several commits into one for a cleaner history.
 	\vfill
 	\textbf{Reverting Changes:}
@@ -200,6 +202,7 @@
 	\end{enumerate}
 	\vfill
 	\pause
+	\alert{Tip:} Use GitHub’s GUI and command line tools to manage this workflow.
 \end{frame}
 
 % Slide 4.2: Detailed Workflow with Commands
@@ -233,10 +236,12 @@
 		\begin{itemize}
 			\item Always backup your work before performing a rebase.
 			\item Use \texttt{git status} and \texttt{git diff} frequently.
+			\item Read error messages carefully and use online searches (e.g., Stack Overflow).
 		\end{itemize}
 	\end{block}
 	\vfill
 	\pause
+	\textbf{Interactive:} Invite questions on real-world issues students have encountered.
 \end{frame}
 
 % Slide 5.2: Recap and Further Resources
@@ -278,8 +283,11 @@
 	\frametitle{Thank You!}
 	\begin{center}
 		Questions?\\[1em]
+		\textbf{Your Name}\\[0.5em]
+		\texttt{your.email@institution.edu}
 	\end{center}
 	\vfill
+	\hyperlink{contents}{\beamergotobutton{Back to TOC}}
 \end{frame}
 
 \end{document}

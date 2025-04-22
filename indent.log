@@ -1,6 +1,6 @@
 INFO:  latexindent version 3.24.4, 2024-07-18, a script to indent .tex files
        latexindent lives here: /usr/local/texlive/2024/texmf-dist/scripts/latexindent/
-       Wed Apr 16 13:35:48 2025
+       Tue Apr 22 08:01:31 2025
        Filename: /home/pratham/School/Spring2025/GitAdvancedTalk/presentation.tex
 INFO:  Processing switches:
        -s|--silent: Silent mode active (you have used either -s or --silent)
@@ -14,7 +14,10 @@ INFO:  YAML reading settings
        latexindent.pl didn't find indentconfig.yaml or .indentconfig.yaml
        see all possible locations: https://latexindentpl.readthedocs.io/en/latest/sec-appendices.html#indentconfig-options)
 INFO:  Backup procedure (-w flag active):
-       Backing up /home/pratham/School/Spring2025/GitAdvancedTalk/presentation.tex to /home/pratham/School/Spring2025/GitAdvancedTalk/presentation.bak0...
+       /home/pratham/School/Spring2025/GitAdvancedTalk/presentation.bak0 already exists, incrementing by 1 (see maxNumberOfBackUps)
+       /home/pratham/School/Spring2025/GitAdvancedTalk/presentation.bak1 already exists, incrementing by 1 (see maxNumberOfBackUps)
+       /home/pratham/School/Spring2025/GitAdvancedTalk/presentation.bak2 will be overwritten (maxNumberOfBackUps reached, see maxNumberOfBackUps)
+       Backing up /home/pratham/School/Spring2025/GitAdvancedTalk/presentation.tex to /home/pratham/School/Spring2025/GitAdvancedTalk/presentation.bak2...
        /home/pratham/School/Spring2025/GitAdvancedTalk/presentation.tex will be overwritten after indentation
 INFO:  Phase 1: searching for objects
 INFO:  Phase 2: finding surrounding indentation
